@@ -40,14 +40,11 @@ public class Money {
 		return false;
 	}
 	
-	// TODO need to figure this one out
-	public Money add (Money m) {
-		
+	public Money add (Money m) {	
 		Money newMoney = new Money();
-		
-		newMoney.setDollars(dollars + m.getDollars());
-		newMoney.setCents(cents + m.getCents());
-		
+		int totalCents = m.getCents() + cents;
+		newMoney.setCents(getRemainderFromCentsOver100(totalCents));
+		newMoney.setDollars(dollars + m.getDollars() + getQuotientFromCentsOver100(totalCents));
 		return newMoney;
 	}
 	
@@ -56,9 +53,28 @@ public class Money {
 		String centsAsString = null;
 		dollarsAsString = dollarsAsString.valueOf(dollars); // String.valueOf(int i). built in java library. converts integer i into a string and returns it as a string.
 		centsAsString = centsAsString.valueOf(cents);
-		
 		return (dollarsAsString + "." + centsAsString);
 	
 	}
-
+	
+	public Money multiply (Money m) { //need to fix multiply method
+		
+		Money newNewMoney = new Money();
+		newNewMoney.setCents(cents * m.getCents());
+		//newNewMoney.setDollars(dollars * m.getDollars());
+		
+		return newNewMoney;
+	}
+	
+	// This function takes in cents as c. And returns the remainder after % 100.
+	public int getRemainderFromCentsOver100 (int c) {
+		int remainder = c % 100;
+		return remainder;
+	}
+	
+	// This function takes in cents as c. And returns the result of c / 100;
+	public int getQuotientFromCentsOver100 (int c) {
+		return c / 100;
+	}
+	
 }
