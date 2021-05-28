@@ -7,7 +7,7 @@ public class MoneyTester
 		Money m3 = new Money();  // initialize dollars to 0 and cents to 0
 
 		System.out.println("\tJane Doe " + "CIS35A Fall 2019  Lab 4"); // use your name
-		System.out.println("m1 = " + m1.toString());
+		System.out.println("m1 = " + m1);
 		System.out.println("m2 = " + m2);
 		System.out.println("m3 = " + m3);
 		System.out.println("m1 equals m2? " + m1.equals(m2));
@@ -18,8 +18,8 @@ public class MoneyTester
 		System.out.println("m4 = m1 + m2 = " + m1.add(m2));
 		
 		
-		//Money m5 = m4.multiply(3);
-		//System.out.println("m5 = m4 * 3 = " + m5);
+		Money m5 = m4.multiply(3);
+		System.out.println("m5 = m4 * 3 = " + m5);
 
 		//System.out.println("m1 + m2 + m3 + m4 = " + m1.add(m2).add(m3).add(m4));
 		/*

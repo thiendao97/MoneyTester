@@ -54,16 +54,17 @@ public class Money {
 		dollarsAsString = dollarsAsString.valueOf(dollars); // String.valueOf(int i). built in java library. converts integer i into a string and returns it as a string.
 		centsAsString = centsAsString.valueOf(cents);
 		return (dollarsAsString + "." + centsAsString);
-	
 	}
 	
-	public Money multiply (Money m) { //need to fix multiply method
-		
-		Money newNewMoney = new Money();
-		newNewMoney.setCents(cents * m.getCents());
-		//newNewMoney.setDollars(dollars * m.getDollars());
-		
-		return newNewMoney;
+	// This function takes in a multiplier of int m and returns a new Money object multipled by the multiplier
+	public Money multiply (int multiplier) { 		
+		Money newMoney = new Money();
+		int totalCents = cents * multiplier;
+		int totalDollars = dollars * multiplier + getQuotientFromCentsOver100(totalCents);
+		newMoney.setCents(getRemainderFromCentsOver100(totalCents));
+		newMoney.setDollars(totalDollars);
+		return newMoney;
+	
 	}
 	
 	// This function takes in cents as c. And returns the remainder after % 100.
