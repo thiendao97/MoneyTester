@@ -21,8 +21,9 @@ public class MoneyTester
 		Money m5 = m4.multiply(3);
 		System.out.println("m5 = m4 * 3 = " + m5);
 
-		//System.out.println("m1 + m2 + m3 + m4 = " + m1.add(m2).add(m3).add(m4));
-		/*
+		System.out.println("m1 + m2 + m3 + m4 = " + m1.add(m2).add(m3).add(m4));
+		
+		
 		Money[] m6 = new Money[]{new Money(10, 50), new Money(20, 50), new Money(30, 50), new Money(40, 50)};
 		Money[] m7 = Money.multiply(m6, 2);
 
@@ -45,6 +46,6 @@ public class MoneyTester
 				System.out.print(m7[i] + ")");
 		}
 		System.out.println();
-		 */
 	}
+
 }

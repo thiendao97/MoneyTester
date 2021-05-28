@@ -40,12 +40,11 @@ public class Money {
 		return false;
 	}
 	
-	public Money add (Money m) {	
+	public Money add (Money m) {
 		Money newMoney = new Money();
-		int totalCents = m.getCents() + cents;
-		newMoney.setCents(getRemainderFromCentsOver100(totalCents));
-		newMoney.setDollars(dollars + m.getDollars() + getQuotientFromCentsOver100(totalCents));
-		return newMoney;
+		newMoney.setCents(m.getCents() + cents);
+		newMoney.setDollars(m.getDollars() + dollars);
+		return normalize(newMoney);
 	}
 	
 	public String toString () {
@@ -64,18 +63,36 @@ public class Money {
 		newMoney.setCents(getRemainderFromCentsOver100(totalCents));
 		newMoney.setDollars(totalDollars);
 		return newMoney;
+	}
 	
+	public static Money [] multiply (Money [] moneyArray, int multiplier) {
+		int arrayLength = moneyArray.length;
+		
+		Money newMoneyArray [] = new Money[arrayLength];
+		
+		for(int i = 0; i < arrayLength; i++)
+		{
+			newMoneyArray[i] = moneyArray[i].multiply(multiplier);
+		}
+		
+		return newMoneyArray;
 	}
 	
 	// This function takes in cents as c. And returns the remainder after % 100.
-	public int getRemainderFromCentsOver100 (int c) {
+	private int getRemainderFromCentsOver100 (int c) {
 		int remainder = c % 100;
 		return remainder;
 	}
 	
 	// This function takes in cents as c. And returns the result of c / 100;
-	public int getQuotientFromCentsOver100 (int c) {
+	private int getQuotientFromCentsOver100 (int c) {
 		return c / 100;
+	}
+	
+	private Money normalize (Money m) {
+		m.setDollars(m.getDollars() + m.cents / 100);
+		m.setCents(m.getCents() % 100);
+		return m;
 	}
 	
 }
