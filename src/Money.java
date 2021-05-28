@@ -52,7 +52,13 @@ public class Money {
 		String centsAsString = null;
 		dollarsAsString = dollarsAsString.valueOf(dollars); // String.valueOf(int i). built in java library. converts integer i into a string and returns it as a string.
 		centsAsString = centsAsString.valueOf(cents);
-		return (dollarsAsString + "." + centsAsString);
+		
+		if (cents < 10) {
+			return dollarsAsString + ".0" + centsAsString;
+		}
+		else {
+			return (dollarsAsString + "." + centsAsString);
+		}
 	}
 	
 	// This function takes in a multiplier of int m and returns a new Money object multipled by the multiplier
