@@ -17,7 +17,6 @@ public class MoneyTester
 		
 		System.out.println("m4 = m1 + m2 = " + m1.add(m2));
 		
-		
 		Money m5 = m4.multiply(3);
 		System.out.println("m5 = m4 * 3 = " + m5);
 
@@ -46,6 +45,10 @@ public class MoneyTester
 				System.out.print(m7[i] + ")");
 		}
 		System.out.println();
+		
+		// Added Tester for Subtraction because it wasn't included in the lab
+		Money m8 = m1.subtract(m2);
+		System.out.println("m8 = m1 - m2 = " + m8);
+		// End Added Tester for Subtraction
 	}
-
 }

@@ -31,8 +31,7 @@ public class Money {
 		cents = c;
 	}
 	
-	
-	// other methods
+	// Math methods
 	public boolean equals(Money m) {
 		if (m.getDollars() == dollars && m.getCents() == cents) {
 			return true;
@@ -44,6 +43,16 @@ public class Money {
 		Money newMoney = new Money();
 		newMoney.setCents(m.getCents() + cents);
 		newMoney.setDollars(m.getDollars() + dollars);
+		return normalize(newMoney);
+	}
+	
+	public Money subtract (Money m) {
+		Money newMoney = new Money();
+		
+		// TODO Subtract method
+		newMoney.setCents(cents - m.getCents());
+		newMoney.setDollars(dollars - m.getDollars());
+		
 		return normalize(newMoney);
 	}
 	
@@ -82,6 +91,11 @@ public class Money {
 	private Money normalize (Money m) {
 		m.setDollars(m.getDollars() + m.cents / 100);
 		m.setCents(m.getCents() % 100);
+		
+		// This logic below is for subtraction
+		if (m.getCents() < 0) {
+			m.setCents(m.getCents() * -1);
+		}
 		return m;
 	}
 }
