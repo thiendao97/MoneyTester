@@ -58,41 +58,24 @@ public class Money {
 	// This function takes in a multiplier of int m and returns a new Money object multipled by the multiplier
 	public Money multiply (int multiplier) { 		
 		Money newMoney = new Money();
-		int totalCents = cents * multiplier;
-		int totalDollars = dollars * multiplier + getQuotientFromCentsOver100(totalCents);
-		newMoney.setCents(getRemainderFromCentsOver100(totalCents));
-		newMoney.setDollars(totalDollars);
-		return newMoney;
+		newMoney.setCents(cents * multiplier);
+		newMoney.setDollars(dollars * multiplier);
+		return normalize(newMoney);
 	}
 	
 	public static Money [] multiply (Money [] moneyArray, int multiplier) {
 		int arrayLength = moneyArray.length;
-		
-		Money newMoneyArray [] = new Money[arrayLength];
-		
-		for(int i = 0; i < arrayLength; i++)
-		{
+		Money newMoneyArray [] = new Money[arrayLength];	
+		for(int i = 0; i < arrayLength; i++) {
 			newMoneyArray[i] = moneyArray[i].multiply(multiplier);
 		}
-		
 		return newMoneyArray;
 	}
 	
-	// This function takes in cents as c. And returns the remainder after % 100.
-	private int getRemainderFromCentsOver100 (int c) {
-		int remainder = c % 100;
-		return remainder;
-	}
-	
-	// This function takes in cents as c. And returns the result of c / 100;
-	private int getQuotientFromCentsOver100 (int c) {
-		return c / 100;
-	}
-	
+	// This function makes cents normal. Because cents have to be less than 100. Anything in excess gets added to dollars.
 	private Money normalize (Money m) {
 		m.setDollars(m.getDollars() + m.cents / 100);
 		m.setCents(m.getCents() % 100);
 		return m;
 	}
-	
 }
