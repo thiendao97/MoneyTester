@@ -2,6 +2,7 @@ public class MoneyTester
 {
 	public static void main(String[] args)
 	{
+		
 		Money m1 = new Money(8, 75); // set dollars to 8 and cents to 75
 		Money m2 = new Money(5, 80); // set dollars to 5 and cents to 80 Money
 		Money m3 = new Money();  // initialize dollars to 0 and cents to 0
@@ -51,4 +52,5 @@ public class MoneyTester
 		System.out.println("m8 = m1 - m2 = " + m8);
 		// End Added Tester for Subtraction
 	}
+	
 }
